@@ -13,12 +13,13 @@ var MySQLInputData = require("../../lib/io/MySQLInputData"),
       host: "localhost",
       port: 3306,
       user: "root",
-      password: "root",
+      password: "",
       database: "test_jasmine"
     },
-    data = [
-       [1, "prova"]
-    ];
+    data = {
+      id: 1,
+      name: "prova"
+    };
 
 describe("MySQLInputData", function () {
 
@@ -33,7 +34,7 @@ describe("MySQLInputData", function () {
     );
 
     connection.query(
-      "CREATE TABLE jasmine" +
+      "CREATE TABLE IF NOT EXISTS jasmine" +
         "(id INT(11) AUTO_INCREMENT, " +
         "name VARCHAR(255), " +
         "PRIMARY KEY (id));", function(err, results) {
@@ -70,13 +71,13 @@ describe("MySQLInputData", function () {
   });
 
   it("Use - basic", function (done) {
-    mySQLInputData.config({
+    mySQLInputData.setConfig({
       connection: configObject,
       query: "SELECT * FROM jasmine"
     });
 
     mySQLInputData.getContent().then(function (results) {
-      expect(results).toEqual(data);
+      expect(results[0].name).toBe(data.name);
       done();
     });
   });

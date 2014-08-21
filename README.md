@@ -1,4 +1,4 @@
-# Receptus Algorithms
+# Receptus Algorithms [![Build Status](https://travis-ci.org/RocAlayo/receptus-algorithms.svg)](https://travis-ci.org/RocAlayo/receptus-algorithms)
 
 [Receptus](https://github.com/RocAlayo/receptus) module with various Data Mining Algorithms.
 
