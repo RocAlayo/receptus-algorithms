@@ -1,2 +1,19 @@
-Receptus Algorithms
-========
+# Receptus Algorithms
+
+[Receptus](https://github.com/RocAlayo/receptus) module with various Data Mining Algorithms.
+
+## Quick Use
+
+To install this module:
+
+	npm install receptus-algorithms
+	
+And then to use it:
+
+	var Receptus = require("receptus"),
+	    receptusAlgorithms = require("receptus-algorithms"),
+		receptus = new Receptus({
+			path: receptusAlgorithms()
+		});
+
+For examples go [Receptus Algorithms Examples](https://github.com/RocAlayo/receptus-algorithms/tree/master/examples)

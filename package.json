@@ -1,29 +1,39 @@
 {
   "name": "receptus-algorithms",
   "version": "0.0.1",
-  "description": "API for making KDD ",
-  "main": "index.js",
-  "private": true,
+  "description": "Receptus module with various Data Mining Algorithms.",
+  "main": "lib/index.js",
+  "homepage": "https://github.com/rocalayo/receptus-algorithms",
+  "bugs": "https://github.com/rocalayo/receptus-algorithms/issues",
+  "license": "MIT",
+  "author": {
+    "name": "Roc Alayo Arnabat",
+    "email": "roc.alayo@gmail.com",
+    "url": "rocalayo.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rocalayo/receptus-algortihms"
+  },
   "directories": {
     "doc": "docs",
     "example": "examples",
-    "test": "jasmine"
+    "test": "spec"
   },
   "scripts": {
     "test": "gulp jasmine"
   },
-  "author": "",
-  "license": "MIT",
   "devDependencies": {
     "gulp": "^3.6.2",
     "gulp-jasmine": "^0.2.0",
     "gulp-jshint": "^1.6.1",
-    "gulp-rename": "^1.2.0",
     "jasmine-node": "^1.14.3"
   },
   "dependencies": {
     "lodash": "^2.4.1",
     "mathjs": "^0.22.0",
+    "mongodb": "^1.4.7",
+    "mysql": "^2.3.2",
     "receptus": "^0.0.1"
   }
 }

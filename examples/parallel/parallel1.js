@@ -3,34 +3,37 @@
  */
 "use strict";
 
-var receptus = require("../../lib");
+var Receptus = require("receptus"),
+    receptusAlgorithms = require("../../lib"),
+    receptus = new Receptus();
 
-receptus.saveStep("kmeans", function ($data, randomCentroids, Kmeans, euclideanDistance) {
-  var kmeans = new Kmeans(),
-    centroids;
+receptus.loadDependencies(receptusAlgorithms());
 
-  console.log();
+receptus.saveStep("kmeans", function ($data, randomCentroids, kmeans, euclideanDistance) {
+  var result;
+
   kmeans.config({
-    centroids: randomCentroids($data, 5),
+    centroids: 5,
     similarity: euclideanDistance,
     convergenceIterations: 10
   });
 
-  centroids =  kmeans.execute($data);
+  result =  kmeans.execute($data);
 
   return {
-    centroids: centroids,
-    data: $data
+    centroids: result.centroids,
+    data: $data,
+    dataCentroids: result.centroidOfRegisters
   };
 });
 
-receptus.step(function (dataFile) {
-  dataFile.config({
+receptus.step(function (csvInputData) {
+  csvInputData.config({
     "path": __dirname + "/data.csv",
     "class-row": 1
   });
 
-  return dataFile.get();
+  return csvInputData.getContent();
 })
 .step(true, ["kmeans","kmeans", "kmeans"])
 .step(function ($data) {

@@ -1,41 +1,53 @@
-/**
- * Created by roc on 30/05/14.
- */
 "use strict";
 
-var receptus = require("../../lib");
+var Receptus = require("receptus"),
+    receptusAlgorithms = require("../../lib"),
+    receptus = new Receptus({
+      path: receptusAlgorithms()
+    }),
+    vectors;
 
 receptus
-
-.step(function (dataFile) {
-  dataFile.config({
+.step(function (csvInputData) {
+  csvInputData.setConfig({
     "path": __dirname + "/data.csv",
-    "class-row": 1
+    "header": true
   });
 
-  return dataFile.get();
+  return csvInputData.getContent();
+})
+.step(function ($data, maxMinVectors, normalizeMatrix) {
+  $data = $data.map(function (register) {
+    return register.map(parseFloat);
+  });
+
+  vectors = maxMinVectors($data);
+
+  return normalizeMatrix($data, vectors.min, vectors.max);
 })
 .step(function ($data, randomCentroids, kmeans, euclideanDistance) {
-  var centroids;
+  var result;
 
-  kmeans.config({
+  kmeans.setConfig({
     centroids: randomCentroids($data, 3),
     similarity: euclideanDistance,
     convergenceIterations: 5
   });
 
-  centroids =  kmeans.execute($data);
+  result =  kmeans.execute($data);
 
   return {
-    centroids: centroids,
-    data: $data
+    centroids: result.centroids,
+    rawData: $data,
+    dataCentroids: result.centroidOfRegisters
   };
-}).step(function ($data) {
+}).step(function ($dataCentroids, $centroids, denormalizeMatrix) {
   var numInstances = [0,0,0];
-  $data.data.forEach(function (row) {
-    numInstances[row.centroid]++;
+  $dataCentroids.forEach(function (centroid) {
+    numInstances[centroid]++;
   });
   console.log(numInstances);
+  console.log(denormalizeMatrix($centroids, vectors.min, vectors.max));
 })
 .error(function ($error) {
   console.log($error.stack);

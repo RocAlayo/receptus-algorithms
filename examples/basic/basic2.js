@@ -3,43 +3,48 @@
  */
 "use strict";
 
-var receptus = require("../../lib");
+var Receptus = require("receptus"),
+  receptusAlgorithms = require("../../lib"),
+  receptus = new Receptus({
+    path: receptusAlgorithms()
+  });
 
 receptus.addDependency("numClusters", 5);
 
 receptus.saveStep("kmeans", function ($data, randomCentroids, Kmeans, euclideanDistance, numClusters) {
   var kmeans = new Kmeans(),
-    centroids;
+    result;
 
-  console.log();
-  kmeans.config({
+  kmeans.setConfig({
     centroids: randomCentroids($data, numClusters),
     similarity: euclideanDistance,
     convergenceIterations: 20
   });
 
-  centroids =  kmeans.execute($data);
+  result =  kmeans.execute($data);
 
   return {
-    centroids: centroids,
-    data: $data
+    centroids: result.centroids,
+    data: $data,
+    dataCentroids: result.centroidOfRegisters
   };
 });
 
-receptus.step(function (dataFile) {
-  dataFile.config({
+receptus.step(function (csvInputData) {
+  csvInputData.setConfig({
     "path": __dirname + "/data.csv",
-    "class-row": 1
+    "class-row": 0
   });
 
-  return dataFile.get();
+  return csvInputData.getContent();
 })
 .step("kmeans")
 .step(function ($data) {
   var numInstances = [0,0,0,0,0],
       numZeros;
-  $data.data.forEach(function (row) {
-    numInstances[row.centroid]++;
+
+  $data.dataCentroids.forEach(function (centroid) {
+    numInstances[centroid]++;
   });
 
   console.log(numInstances);
@@ -55,8 +60,8 @@ receptus.step(function (dataFile) {
 .step(function ($data) {
   var numInstances = [0,0,0];
 
-  $data.data.forEach(function (row) {
-    numInstances[row.centroid]++;
+  $data.dataCentroids.forEach(function (centroid) {
+    numInstances[centroid]++;
   });
 
   console.log(numInstances);

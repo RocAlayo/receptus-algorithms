@@ -1,0 +1,29 @@
+name,type,min,max
+Connected Components,integer,1,39
+Diameter,integer,1,46
+Radius,integer,1,13
+Centralization,integer,0,1
+Shortest Path,integer,2,23420
+Characteristic Path Length,integer,1,159729
+Avg.num.Neighbours,real,0.67,3.44
+Density,real,0.0082,1
+Heterogeneity,real,0,1.796
+Isolated Nodes,integer,0,3
+Number of Self Loops,integer,0,4
+Multi-edge Node Pair,integer,0,220
+NeighborhoodConnectivity,real,0.67,15.604
+NumberOfDirectedEdges,real,0.67,10.22
+Stress,real,0,2112.05
+SelfLoops,real,0,0.67
+Partner Of MultiEdged NodePairs,integer,0,3
+Degree,real,1,10.22
+TopologicalCoefficient,real,0,1
+BetweennessCentrality,real,0,0.333
+Radiality,real,0.5437,30744573457
+Eccentricity,real,0.67,25.034
+NumberOfUndirectedEdges,real,0,0.67
+ClosenessCentrality,real,0.1022,1
+AverageShortestPathLength,real,0.67,12.67
+ClusteringCoefficient,real,0,1
+nodeCount,integer,2,232
+edgeCount,integer,1,444
