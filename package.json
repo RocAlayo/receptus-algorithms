@@ -1,6 +1,6 @@
 {
   "name": "receptus-algorithms",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Receptus module with various Data Mining Algorithms.",
   "main": "lib/index.js",
   "homepage": "https://github.com/rocalayo/receptus-algorithms",
@@ -22,6 +22,10 @@
   },
   "scripts": {
     "test": "gulp jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rocalayo/receptus-algortihms"
   },
   "devDependencies": {
     "gulp": "^3.6.2",
