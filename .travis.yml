@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - '0.10'
+  - '0.11'
+before_script:
+  - mysql -e 'create database test_jasmine;'
+  - npm install -g gulp jasmine-node
+services: mongodb
