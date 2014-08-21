@@ -1,8 +1,15 @@
 language: node_js
 node_js:
-  - '0.10'
-  - '0.11'
+- '0.10'
+- '0.11'
 before_script:
-  - mysql -e 'create database test_jasmine;'
-  - npm install -g gulp jasmine-node
+- mysql -e 'create database test_jasmine;'
+- npm install -g gulp jasmine-node
 services: mongodb
+deploy:
+  provider: npm
+  email: roc.alayo@gmail.com
+  api_key:
+    secure: dn9plE8fu0qX1blbVB/nflVFsUP9yMQeuFPtlSeqnqYQsJ56JL02qqwrKdx3oV031ArSu1rHLRSmoGV80eRicnJR1eswAqItdlEURZKNIR4EgmYn2VJaAwdfXxH/evPV8Wf0zw+fkf1P9gDrlnmxl8l53cdKF7evD4fXYddwAU8=
+  on:
+    branch: master
