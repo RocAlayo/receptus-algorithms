@@ -1,4 +1,5 @@
-# Receptus Algorithms [![Build Status](https://travis-ci.org/RocAlayo/receptus-algorithms.svg)](https://travis-ci.org/RocAlayo/receptus-algorithms) [![Dependency Status](https://david-dm.org/rocalayo/receptus-algorithms.svg)](https://david-dm.org/rocalayo/receptus-algorithms)
+# Receptus Algorithms
+[![NPM version](https://badge.fury.io/js/receptus-algorithms.svg)](http://badge.fury.io/js/receptus-algorithms) [![Build Status](https://travis-ci.org/RocAlayo/receptus-algorithms.svg)](https://travis-ci.org/RocAlayo/receptus-algorithms) [![Dependency Status](https://david-dm.org/rocalayo/receptus-algorithms.svg)](https://david-dm.org/rocalayo/receptus-algorithms)
 
 [Receptus](https://github.com/RocAlayo/receptus) module with various Data Mining Algorithms.
 
