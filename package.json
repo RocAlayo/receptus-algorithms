@@ -37,6 +37,6 @@
     "mathjs": "^0.22.0",
     "mongodb": "^1.4.7",
     "mysql": "^2.3.2",
-    "receptus": "^0.0.1"
+    "receptus": "^0.0.3"
   }
 }
