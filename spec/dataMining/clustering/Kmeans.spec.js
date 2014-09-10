@@ -187,6 +187,12 @@ describe("Kmeans", function () {
 
     result = kmeans.execute(data);
 
-    expect(result.centroids).toEqual(data);
+    result = result.centroids.filter(function (centroid) {
+      return data.some(function (register) {
+        return _.difference(register, centroid) === [];
+      });
+    });
+
+    expect(result).toEqual([]);
   });
 });
