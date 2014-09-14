@@ -43,9 +43,16 @@ describe("euclideanDistance", function () {
 
   it("with data", function () {
     var reg1 = [10, 5, 15, 76, 90],
-        reg2 = [5, 7, 23, 1000, 10],
-        res = euclideanDistance(reg1, reg2);
+      reg2 = [5, 7, 23, 1000, 10],
+      res = euclideanDistance(reg1, reg2);
 
     expect((res - 927.5) < 1).toBeTruthy();
+  });
+
+  it("same register", function () {
+    var reg1 = [10, 5, 15, 76, 90],
+      res = euclideanDistance(reg1, reg1);
+
+    expect(res).toBe(0);
   });
 });

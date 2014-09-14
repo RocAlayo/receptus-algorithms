@@ -10,7 +10,7 @@ var Receptus = require("receptus"),
 receptus
 .step(function (csvInputData) {
   csvInputData.setConfig({
-    "path": __dirname + "/data.wholesale.csv",
+    "path": __dirname + "/wholesale.data.csv",
     "header": true
   });
 
@@ -30,8 +30,8 @@ receptus
 
   kmeans.setConfig({
     centroids: randomCentroids($data, 2),
-    similarity: euclideanDistance,
-    convergenceIterations: 5
+    similarity: manhattanDistance,
+    convergenceIterations: 10
   });
 
   result =  kmeans.execute($data);
@@ -43,7 +43,7 @@ receptus
     sse: result.internalEvaluation[0]
   };
 }).step(function ($dataCentroids, $centroids, denormalizeMatrix, $sse) {
-  var numInstances = [0,0,0];
+  var numInstances = [0,0];
   $dataCentroids.forEach(function (centroid) {
     numInstances[centroid]++;
   });
