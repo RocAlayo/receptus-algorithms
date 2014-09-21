@@ -40,6 +40,16 @@ describe("Knn", function () {
     }).toThrow("'predict' property needs to be a plain object");
   });
 
+  it("Error - setConfig - Wrong type of value in property 'predict.formula'", function () {
+    expect(function () {
+      knn.setConfig({
+        predict: {
+          formula: 2
+        }
+      });
+    }).toThrow("'formula' property of 'predict' needs to be a function");
+  });
+
   it("Error - setConfig - Wrong type of value in property 'predict.register'", function () {
     expect(function () {
       knn.setConfig({
