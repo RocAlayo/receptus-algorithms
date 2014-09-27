@@ -1,6 +1,6 @@
 {
   "name": "receptus-algorithms",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Receptus module with various Data Mining Algorithms.",
   "main": "lib/index.js",
   "homepage": "https://github.com/rocalayo/receptus-algorithms",
